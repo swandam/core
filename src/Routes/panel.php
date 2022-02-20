@@ -1,5 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Swandam\Core\Http\Controllers\LoginController;
 
-Route::get('login', 'LoginController@show')->name("login");
+Route::middleware(['swandam_guest'])->controller(LoginController::class)->group(function () {
+    Route::get('login', 'show')->name('login.index');
+    Route::post('login', 'login')->name('login');
+});

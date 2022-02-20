@@ -32,11 +32,12 @@ class SwandamServiceProvider extends ServiceProvider
         ], 'swandam');
 
         $this->loadMigrationsFrom(__DIR__ . '/Database/migrations');
+        $this->loadViewsFrom(__DIR__ . '/Resources/views/panel', 'swandam');
 
         $router = $this->app->make(Router::class);
-        $router->aliasMiddleware('web', AfterMiddleware::class);
-        $router->aliasMiddleware('auth', Authenticate::class);
-        $router->aliasMiddleware('guest', RedirectIfAuthenticate::class);
+        $router->aliasMiddleware('swandam_web', AfterMiddleware::class);
+        $router->aliasMiddleware('swandam_auth', Authenticate::class);
+        $router->aliasMiddleware('swandam_guest', RedirectIfAuthenticate::class);
     }
 
 }

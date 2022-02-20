@@ -6,5 +6,8 @@ use Swandam\Core\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
-
+    public function show()
+    {
+        return view('swandam::auth.login');
+    }
 }
