@@ -11,15 +11,16 @@ class Authenticate extends BaseAuthenticate
 {
     public function handle($request, Closure $next, ...$guards)
     {
-        $this->authenticate($request, ['admin']);
-
+        dd(
+        $this->authenticate($request, ['admin'])
+        );
         return $next($request);
     }
 
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            return panel('login');
+            return route('swandam.login.index');
         }
     }
 }

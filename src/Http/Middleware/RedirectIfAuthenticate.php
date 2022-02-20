@@ -12,13 +12,13 @@ class RedirectIfAuthenticate
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
+dd($guards);
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 return redirect(RouteServiceProvider::HOME);
             }
         }
 
-        return $next($request);
+        return route('swandam.login.index');
     }
 }
